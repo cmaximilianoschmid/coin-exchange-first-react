@@ -13,7 +13,6 @@ export default class AccountBalance extends Component {
     render() {
         return (
             <Section className = "balanceDisplay">
-            <br></br>
             Balance: ${this.props.amount}
             </Section>
         );

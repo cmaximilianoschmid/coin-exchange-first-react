@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import styled from 'styled-components'
 
 const Img = styled.img`
-    height: 1vmin;
+    height: 10vmin;
     pointer-events: none;
 `
 
@@ -26,7 +26,7 @@ export default class ExchangeHeader extends Component {
     render() {
         return (
             <Header className="App-header">
-               <img src={logo} alt="React logo" className="App-logo"/>
+               <Img src={logo} alt="React logo" className="App-logo"/>
                <H1 className="App-title">Exchange</H1>
             </Header>
         )

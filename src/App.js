@@ -5,9 +5,9 @@ import ExchangeHeader from './components/ExchangeHeader/ExchangeHeader';
 import styled from 'styled-components'
 
 const Div = styled.div`
-text-align: center;
-background-color: antiquewhite;
-color: rgb(1, 1, 36);
+  text-align: center;
+  background-color: antiquewhite;
+  color: rgb(1, 1, 36);
 `
 
 class App extends React.Component {
@@ -33,6 +33,23 @@ class App extends React.Component {
         },
       ]
     }
+    this.handleRefresh = this.handleRefresh.bind(this);
+  }
+
+  handleRefresh(valueChangeTicker){
+    const newCoinData = this.state.coinData.map(function({ticker, name, price}) {
+      let newPrice = price
+      if(valueChangeTicker === ticker){
+        const randomPercentage = 0.995 + Math.random() * 0.01;
+                newPrice = newPrice * randomPercentage
+      }
+      return {
+        ticker, //or ticker: ticker
+        name, //or name: name
+        price: newPrice
+      }
+    });
+    this.setState({coinData: newCoinData});
   }
 
   render() {
@@ -40,7 +57,7 @@ class App extends React.Component {
       <Div className="App">
         <ExchangeHeader/>
         <AccountBalance amount={this.state.balance} />
-        <CoinList coinData={this.state.coinData} />
+        <CoinList coinData={this.state.coinData} handleRefresh={this.handleRefresh}/>
       </Div>
     );
   }

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import Coin from '../Coin/Coin';
+import styled from 'styled-components'
+
+const Table = styled.table`
+    margin: 50px;
+    display: inline-block;
+    text-align: center;
+`
 
 export default class CoinList extends Component {
     render() {
         return (
-            <table className="coin-table">
+            <Table className="coin-table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -14,10 +21,17 @@ export default class CoinList extends Component {
                 </thead>
                 <tbody>
                 {
-                    this.props.coinData.map(value => <Coin name={value.name} ticker={value.ticker} price={value.price}/>)
+                    /* this.props.coinData.map(value => <Coin name={value.name} ticker={value.ticker} price={value.price}/>) */
+                    this.props.coinData.map( ({name, ticker, price}) =>
+                        <Coin key={ticker}
+                            handleRefresh={this.props.handleRefresh}
+                            name={name}
+                            ticker={ticker}
+                            price={price} />
+                    )
                 }
                 </tbody>
-            </table>
+            </Table>
         )
     }
 }

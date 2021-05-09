@@ -56,7 +56,7 @@ class App extends React.Component {
     return (
       <Div className="App">
         <ExchangeHeader/>
-        <AccountBalance amount={this.state.balance} showBalance={true}/>
+        <AccountBalance amount={this.state.balance} showBalance={false}/>
         <CoinList coinData={this.state.coinData} handleRefresh={this.handleRefresh}/>
       </Div>
     );

@@ -17,19 +17,19 @@ class App extends React.Component {
       balance: 9000,
       coinData: [
         {
-          name: 'Bitcoin', ticker:'BTC', price: 9999.99
+          name: 'Bitcoin', ticker:'BTC', balance: 0.5, price: 9999.99
         },
         {
-          name: 'Ether', ticker:'ETH', price: 299.99
+          name: 'Ether', ticker:'ETH', balance: 32.5, price: 299.99
         },
         {
-          name: 'Tether', ticker:'USDT', price: 1.00
+          name: 'Tether', ticker:'USDT', balance: 0, price: 1.00
         },
         {
-          name: 'Ripple', ticker:'XRP', price: 0.2
+          name: 'Ripple', ticker:'XRP', balance: 1000, price: 0.2
         },
         {
-          name: 'Cardano', ticker:'ADA', price: 1.2
+          name: 'Cardano', ticker:'ADA', balance: 0, price: 1.2
         },
       ]
     }
@@ -56,7 +56,7 @@ class App extends React.Component {
     return (
       <Div className="App">
         <ExchangeHeader/>
-        <AccountBalance amount={this.state.balance} />
+        <AccountBalance amount={this.state.balance} showBalance={true}/>
         <CoinList coinData={this.state.coinData} handleRefresh={this.handleRefresh}/>
       </Div>
     );

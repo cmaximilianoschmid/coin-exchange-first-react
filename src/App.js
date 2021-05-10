@@ -11,34 +11,29 @@ const Div = styled.div`
 `
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      balance: 9000,
-      showBalance: true,
-      coinData: [
-        {
-          name: 'Bitcoin', ticker:'BTC', balance: 0.5, price: 9999.99
-        },
-        {
-          name: 'Ether', ticker:'ETH', balance: 32.5, price: 299.99
-        },
-        {
-          name: 'Tether', ticker:'USDT', balance: 0, price: 1.00
-        },
-        {
-          name: 'Ripple', ticker:'XRP', balance: 1000, price: 0.2
-        },
-        {
-          name: 'Cardano', ticker:'ADA', balance: 0, price: 1.2
-        },
-      ]
-    }
-    this.handleBalanceVisibilityChange = this.handleBalanceVisibilityChange.bind(this);
-    this.handleRefresh = this.handleRefresh.bind(this);
+  state = {
+    balance: 9000,
+    showBalance: true,
+    coinData: [
+      {
+        name: 'Bitcoin', ticker:'BTC', balance: 0.5, price: 9999.99
+      },
+      {
+        name: 'Ether', ticker:'ETH', balance: 32.5, price: 299.99
+      },
+      {
+        name: 'Tether', ticker:'USDT', balance: 0, price: 1.00
+      },
+      {
+        name: 'Ripple', ticker:'XRP', balance: 1000, price: 0.2
+      },
+      {
+        name: 'Cardano', ticker:'ADA', balance: 0, price: 1.2
+      },
+    ]
   }
 
-  handleBalanceVisibilityChange() {
+  handleBalanceVisibilityChange = () => {
     this.setState( function(oldState) {
       return{
         ...oldState,
@@ -47,19 +42,14 @@ class App extends React.Component {
     });
   }
 
-  handleRefresh(valueChangeTicker){
-    const newCoinData = this.state.coinData.map(function({ticker, name, price, balance}) {
-      let newPrice = price
-      if(valueChangeTicker === ticker){
+  handleRefresh = (valueChangeTicker) => {
+    const newCoinData = this.state.coinData.map(function(values) {
+      let newValues = {...values};
+      if(valueChangeTicker === values.ticker){
         const randomPercentage = 0.995 + Math.random() * 0.01;
-                newPrice = newPrice * randomPercentage
+                newValues.price *= randomPercentage
       }
-      return {
-        ticker, //or ticker: ticker
-        name, //or name: name
-        price: newPrice,
-        balance
-      }
+      return newValues;
     });
     this.setState({coinData: newCoinData});
   }

@@ -10,10 +10,6 @@ const Td = styled.td`
 `
 
 export default class Coin extends Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
 
     /* to auto refresh: 
     componentDidMount() {
@@ -30,7 +26,7 @@ export default class Coin extends Component {
     }
     */
 
-    handleClick(event){
+    handleClick = (event) => {
         event.preventDefault();
         this.props.handleRefresh(this.props.ticker);
 /*

@@ -26,8 +26,6 @@ export default function CoinList(props){
                     props.coinData.map( ({key, name, ticker, balance, price}) =>
                         <Coin key={key}
                             handleRefresh={props.handleRefresh}
-                            handleBuy={props.handleBuy}
-                            handleSell={props.handleBuy}
                             name={name}
                             ticker={ticker}
                             showBalance={props.showBalance}

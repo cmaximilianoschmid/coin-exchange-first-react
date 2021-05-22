@@ -56,8 +56,6 @@ export default function Coin(props) {
                     <Td>
                         <form action="#" method="POST">
                             <button onClick={handleRefreshClick}>Refresh price</button>
-                            <button onClick={handleBuyClick}>Buy</button>
-                            <button onClick={handleSellClick}>Sell</button>
                         </form>
                     </Td>
 

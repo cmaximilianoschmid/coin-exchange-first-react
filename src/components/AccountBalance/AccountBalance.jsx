@@ -9,14 +9,19 @@ const Section = styled.section`
     padding: 1.5rem 0 1.5rem 5rem;
 `;
 
+const Button = styled.button`
+    margin:10px 10px 10px 10px;
+`;
+
 
 export default function AccountBalance(props) {
         const buttonText = props.showBalance ? 'Hide Balance' : 'Show Balance';
         let showHideBalance = props.showBalance ? <>${props.amount}</> : null;
         return (
             <Section className = "balanceDisplay">
-            {showHideBalance}
-            <button onClick={props.handleBalanceVisibilityChange}>{buttonText}</button>
+                {showHideBalance}
+                <Button onClick={props.handleBalanceVisibilityChange}>{buttonText}</Button>
+                <Button onClick={props.addFunds}>Add $1200</Button>
             </Section>
         );
 }

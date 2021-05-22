@@ -26,9 +26,10 @@ export default function Coin(props) {
     }
     */
 
-    const handleClick = (event) => {
+    const handleRefreshClick = (event) => {
         event.preventDefault();
         props.handleRefresh(props.tickerId);
+        
 /*
         const randomPercentage = 0.995 + Math.random() * 0.01;
         this.setState(function(oldState){
@@ -38,6 +39,14 @@ export default function Coin(props) {
         })
 */
     }
+
+    const handleBuyClick = (event) => {
+        props.handleBuy(props.tickerId);
+    }
+
+    const handleSellClick = (event) => {
+        props.handleSell(props.tickerId);
+    }
         return (
                    <tr className="coin-row">
                     <Td>{props.name}</Td>
@@ -46,7 +55,9 @@ export default function Coin(props) {
                     {props.showBalance ? <Td>$ {props.balance}</Td> : null}
                     <Td>
                         <form action="#" method="POST">
-                            <button onClick={handleClick}>Refresh</button>
+                            <button onClick={handleRefreshClick}>Refresh price</button>
+                            <button onClick={handleBuyClick}>Buy</button>
+                            <button onClick={handleSellClick}>Sell</button>
                         </form>
                     </Td>
 

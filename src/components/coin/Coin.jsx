@@ -40,13 +40,6 @@ export default function Coin(props) {
 */
     }
 
-    const handleBuyClick = (event) => {
-        props.handleBuy(props.tickerId);
-    }
-
-    const handleSellClick = (event) => {
-        props.handleSell(props.tickerId);
-    }
         return (
                    <tr className="coin-row">
                     <Td>{props.name}</Td>
